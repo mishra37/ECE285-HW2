@@ -27,7 +27,7 @@ We train a DCGAN on the full WikiArt dataset (81{,}444 paintings, 27 styles) at 
 \section{Method}
 \paragraph{Data.} We use the WikiArt dataset from Kaggle (\texttt{steubk/wikiart}), all 27 style folders (81{,}444 images). We center-crop each image, resize it to $64\times64$ (bicubic) and cache all images once as a \texttt{uint8} array. For training, we scale pixels to $[-1,1]$ and flip images horizontally at random.
 
-\paragraph{Model.} We follow DCGAN~\cite{radford2016dcgan}. The generator maps $z\sim\mathcal{N}(0,I_{100})$ through five transposed convolutions ($4\times4$, stride 2, channels $512\!\to\!256\!\to\!128\!\to\!64\!\to\!3$). Each layer uses BatchNorm and ReLU, and the last layer uses $\tanh$. The discriminator mirrors it with strided convolutions, BatchNorm and LeakyReLU(0.2), ending in a single logit. We initialize the weights from $\mathcal{N}(0,0.02)$. G has 3.6M and D 2.8M parameters.
+\paragraph{Model.} We follow DCGAN~\cite{radford2016dcgan}. The generator ($G$) maps $z\sim\mathcal{N}(0,I_{100})$ through five transposed convolutions ($4\times4$, stride 2, channels $512\!\to\!256\!\to\!128\!\to\!64\!\to\!3$). Each layer uses BatchNorm and ReLU, and the last layer uses $\tanh$. The discriminator ($D$) mirrors it with strided convolutions, BatchNorm and LeakyReLU(0.2), ending in a single logit. We initialize the weights from $\mathcal{N}(0,0.02)$. G has 3.6M and D 2.8M parameters.
 
 \paragraph{Objective.} D minimizes binary cross-entropy on real vs.\ fake images. G uses the non-saturating loss $-\log D(G(z))$~\cite{goodfellow2014gan}. We apply one-sided label smoothing (real target 0.9)~\cite{salimans2016improved}.
 
