@@ -1,0 +1,9 @@
+torch
+torchvision
+pytorch-ignite
+scipy
+numpy
+pillow
+matplotlib
+tqdm
+kaggle

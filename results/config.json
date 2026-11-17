@@ -1,0 +1,16 @@
+{
+  "data": "/kaggle/working/wikiart64.npy",
+  "out": "/kaggle/working/run1",
+  "epochs": 50,
+  "batch_size": 128,
+  "nz": 100,
+  "ngf": 64,
+  "ndf": 64,
+  "lr_g": 0.0002,
+  "lr_d": 0.0002,
+  "beta1": 0.5,
+  "label_smooth": 0.9,
+  "workers": 2,
+  "seed": 0,
+  "resume": "/kaggle/working/run1/last.pt"
+}
